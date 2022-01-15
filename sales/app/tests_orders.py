@@ -70,7 +70,7 @@ class OrdersTest(TestCase):
         res = self.client.post('/api/orders/',
                                data=json.dumps({
                                    'date': "2020-01-01",
-                                   'item': "Hard Drive",
+                                   'item': "Test Item",
                                    'price': -1,
                                    'quantity': 10,
                                }),
@@ -82,7 +82,7 @@ class OrdersTest(TestCase):
         res = self.client.post('/api/orders/',
                                data=json.dumps({
                                    'date': "2020-01-01",
-                                   'item': "Hard Drive",
+                                   'item': "Test Item",
                                    'price': 1,
                                    'quantity': -10,
                                }),
@@ -108,7 +108,7 @@ class OrdersTest(TestCase):
         res = self.client.post('/api/orders/',
                                data=json.dumps({
                                    'date': "2020-01-01",
-                                   'item': "Hard Drive",
+                                   'item': "Test Item",
                                    'price': 5,
                                    'quantity': 7,
                                    'amount': 10000, 
@@ -126,7 +126,7 @@ class OrdersTest(TestCase):
         res = self.client.post('/api/orders/',
                                data=json.dumps({
                                    'date': "2020-01-01",
-                                   'item': "Hard Drive",
+                                   'item': "Test Item",
                                    'price': 5,
                                    'quantity': 7,
                                }),
@@ -139,7 +139,7 @@ class OrdersTest(TestCase):
         res = self.client.post('/api/orders/',
                                data=json.dumps({
                                    'date': "2020-02-02",
-                                   'item': "Monitor",
+                                   'item': "Test Item2",
                                    'price': 20,
                                    'quantity': 30,
                                }),
@@ -167,7 +167,7 @@ class OrdersTest(TestCase):
         self.assertEquals(res.status_code, 200)
         result = json.loads(res.content)["data"]
         self.assertEquals(result["date"], '2020-01-01')
-        self.assertEquals(result["item"], 'Hard Drive')
+        self.assertEquals(result["item"], 'Test Item')
         self.assertEquals(result["price"], 5)
         self.assertEquals(result["quantity"], 7)
         self.assertEquals(result["amount"], 35)
@@ -179,7 +179,7 @@ class OrdersTest(TestCase):
         res = self.client.post('/api/orders/',
                                data=json.dumps({
                                    'date': "2020-01-01",
-                                   'item': "Hard Drive",
+                                   'item': "Test Item",
                                    'price': 5,
                                    'quantity': 7,
                                }),
@@ -192,7 +192,7 @@ class OrdersTest(TestCase):
         res = self.client.put(f'/api/orders/{id}/',
                                data=json.dumps({
                                    'date': "2020-02-02",
-                                   'item': "Monitor",
+                                   'item': "Test Item2",
                                    'price': 50,
                                    'quantity': 70,
                                }),
@@ -211,7 +211,7 @@ class OrdersTest(TestCase):
         self.assertEquals(res.status_code, 200)
         result = json.loads(res.content)["data"]
         self.assertEquals(result["date"], '2020-02-02')
-        self.assertEquals(result["item"], 'Monitor')
+        self.assertEquals(result["item"], 'Test Item2')
         self.assertEquals(result["price"], 50)
         self.assertEquals(result["quantity"], 70)
         self.assertEquals(result["amount"], 3500)
